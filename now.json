@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "name": "website-template",
+  "alias": "template.connor.li",
+  "regions": ["sfo", "bru"],
+  "routes": [
+    {
+      "src": "/api/(.+)",
+      "dest": "server/api/$1.js"
+    }
+  ],
+  "builds": [
+    {
+      "src": "server/api/**.js",
+      "use": "@now/node@canary",
+      "config": { "maxLambdaSize": "10mb" }
+    },
+    { "src": "package.json", "use": "@now/next" }
+  ]
+}
